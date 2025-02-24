@@ -255,8 +255,9 @@ body {
     line-height: 18px;
     /* 100% */
 }
+
 .task__btn-timer {
-    all:unset
+    all: unset
 }
 
 
@@ -346,7 +347,7 @@ body {
 
 
 
-    
+
 }
 
 .task__deadlines {
@@ -374,16 +375,17 @@ body {
 .task__spent-time {
     display: flex;
     align-items: center;
-    gap:4px;
+    gap: 4px;
 }
 
 .task__spent-text {
     color: #6B7280;
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 14px; /* 100% */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    /* 100% */
 }
 
 .task__end {
@@ -395,3 +397,152 @@ line-height: 14px; /* 100% */
     margin-top: 18px;
 }
 
+/* Добавление новых задач */
+
+.new-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 552px;
+    min-height: 200;
+    border: 2px dashed #6B7280;
+    padding-top: 1px;
+    padding-bottom: 18px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    margin: 16px 8px 0px 8px;
+}
+
+.new-task__title {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    color: #6B7280;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    /* 100% */
+}
+
+
+
+/* Сама форма ввода задачи */
+
+.nameTaskLabel {
+    color: #374151;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 5px;
+}
+
+#nameTaskInput {
+    width: 136px;
+    height: 25px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    background: #FFF;
+}
+
+.priorityTaskLabel {
+    color: #374151;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#priorityTaskInput {
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    background: #FFF;
+}
+
+.deadlineTaskLabel {
+    color: #374151;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+#deadlineTaskInput {
+    border-radius: 8px;
+    height: 25px;
+    border: 1px solid #E5E7EB;
+    background: #FFF;
+    color: #374151;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.new-task__start {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.new-task__start {
+    margin-top: 18px;
+}
+
+.new-task__main {
+    margin-top: 18px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.new-task__end-button {
+    display: inline-flex;
+    height: 35px;
+    padding: 8px 13px 7px 13px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    background: #4F46E5;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.new-task__end--icon {
+    margin-right: 5px;
+}
+
+.new-task__end {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.new-task__close {
+    all:unset;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    cursor: pointer;
+}
