@@ -1,2 +1,3 @@
 import { renderFormTask } from "./renderFormAddTask";
-export {renderFormTask} 
+import { renderTask } from "./renderTask";
+export {renderFormTask,renderTask} 

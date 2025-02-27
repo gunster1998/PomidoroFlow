@@ -1,4 +1,5 @@
 import { Task } from "./storageManager"
+import {renderTask} from './renderTask'
 
 export function renderFormTask() {
     const addNewTaskElement = document.createElement('div')
@@ -87,6 +88,15 @@ export function renderFormTask() {
         const newTask = new Task(nameTask,priorityTask,deadlineTask)
 
         console.log(newTask)
+
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        tasks.push(newTask)
+
+        localStorage.setItem('tasks',JSON.stringify(tasks))
+        renderTask();
+        renderFormTask();
+        console.log(tasks)
 
     })
 

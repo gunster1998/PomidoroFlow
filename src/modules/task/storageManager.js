@@ -7,6 +7,7 @@ export class Task {
         this.priority = priority;
         this.deadline = deadline;
         this.dateCreation = new Date();
+        this.timeSpent = 0;
     }
 
 }
