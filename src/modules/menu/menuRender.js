@@ -1,14 +1,14 @@
-import logo from '../../assets/img/logo.png'
-import './menuStyles.css'
+import logo from "../../assets/img/logo.png";
+import "./menuStyles.css";
 
-export function renderMenu () {
-    const miniMenu = document.createElement('aside')
-    const mainMenu = document.createElement('aside')
+export function renderMenu() {
+  const miniMenu = document.createElement("aside");
+  const mainMenu = document.createElement("aside");
 
-    miniMenu.classList.add('sidebarMini')
-    mainMenu.classList.add('sidebar')
+  miniMenu.classList.add("sidebarMini");
+  mainMenu.classList.add("sidebar");
 
-    miniMenu.innerHTML = ` <div class="sidebar__logo--mini"> <img class="sidebar__logo--image" src=${logo} alt="logo"></div>
+  miniMenu.innerHTML = ` <div class="sidebar__logo--mini"> <img class="sidebar__logo--image" src=${logo} alt="logo"></div>
         <nav class="sidebar__nav">
             <ul class="sidebar__list">
                 <li class="sidebar__item--mini"><svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="18"
@@ -86,8 +86,8 @@ export function renderMenu () {
                         </defs>
                     </svg></li>
             </ul>
-        </nav>`
-    mainMenu.innerHTML = `    <div class="sidebar__logo"> <img class="sidebar__logo--image" src=${logo} alt="logo"><a
+        </nav>`;
+  mainMenu.innerHTML = `    <div class="sidebar__logo"> <img class="sidebar__logo--image" src=${logo} alt="logo"><a
             class="sidebar__logo--text" href="./assets/">Pomidoro Flow</a></div>
     <nav class="sidebar__nav">
         <ul class="sidebar__list">
@@ -167,10 +167,8 @@ export function renderMenu () {
                     </defs>
                 </svg><a class="sidebar__link" href=""> Профиль</a></li>
         </ul>
-    </nav>`
+    </nav>`;
 
-    document.body.prepend(miniMenu)
-    document.body.prepend(mainMenu)
-
-    
+  document.body.prepend(miniMenu);
+  document.body.prepend(mainMenu);
 }

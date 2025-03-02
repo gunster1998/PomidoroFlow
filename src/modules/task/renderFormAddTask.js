@@ -1,33 +1,30 @@
-import { Task } from "./storageManager"
-import {renderTask} from './renderTask'
+import { Task } from "./storageManager";
+import { renderTask } from "./renderTask";
 
 export function renderFormTask() {
-    const addNewTaskElement = document.createElement('div')
-    const taskList = document.querySelector('.tasks__list')
+  const addNewTaskElement = document.createElement("div");
+  const taskList = document.querySelector(".tasks__list");
 
-    function addButtonFormTask() {
-
-        addNewTaskElement.classList.add('new-task')
-        addNewTaskElement.innerHTML =
-            `<div class="new-task__title">Добавить новую задачу</div>
+  function addButtonFormTask() {
+    addNewTaskElement.classList.add("new-task");
+    addNewTaskElement.innerHTML = `<div class="new-task__title">Добавить новую задачу</div>
             <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
                                 <path
                                     d="M22.4286 3.34375C22.4286 1.71895 21.1199 0.40625 19.5001 0.40625C17.8802 0.40625 16.5715 1.71895 16.5715 3.34375V16.5625H3.39293C1.77306 16.5625 0.464355 17.8752 0.464355 19.5C0.464355 21.1248 1.77306 22.4375 3.39293 22.4375H16.5715V35.6562C16.5715 37.2811 17.8802 38.5938 19.5001 38.5938C21.1199 38.5938 22.4286 37.2811 22.4286 35.6562V22.4375H35.6072C37.2271 22.4375 38.5358 21.1248 38.5358 19.5C38.5358 17.8752 37.2271 16.5625 35.6072 16.5625H22.4286V3.34375Z"
                                     fill="#6B7280" />
-        </svg>`
+        </svg>`;
 
-        addNewTaskElement.addEventListener('click', addFormTask);
+    addNewTaskElement.addEventListener("click", addFormTask);
+  }
 
-    }
+  function addFormTask(event) {
+    console.log("Обновляем форму");
+    event.stopPropagation();
+    //Убираю событие
+    addNewTaskElement.removeEventListener("click", addFormTask);
 
-    function addFormTask(event) {
-        console.log('Обновляем форму')
-        event.stopPropagation();
-        //Убираю событие
-        addNewTaskElement.removeEventListener('click', addFormTask);
-
-        addNewTaskElement.innerHTML = '';
-        addNewTaskElement.innerHTML = `                    <form class="new-task__form" style="width: 100%;" action="">
+    addNewTaskElement.innerHTML = "";
+    addNewTaskElement.innerHTML = `                    <form class="new-task__form" style="width: 100%;" action="">
                         <div class="new-task__start">
                             <label class="nameTaskLabel" for="nameTaskInput">Название:</label>
                             <input name = "nameTask" id="nameTaskInput" type="text" required>
@@ -66,45 +63,40 @@ export function renderFormTask() {
                             </defs>
                           </svg></button>
     </form>`;
-    const closeButton = addNewTaskElement.querySelector('.new-task__close')
-    const formAddTask = addNewTaskElement.querySelector('.new-task__form')
+    const closeButton = addNewTaskElement.querySelector(".new-task__close");
+    const formAddTask = addNewTaskElement.querySelector(".new-task__form");
 
-    closeButton.addEventListener('click', (event) => {
-        event.stopPropagation();
+    closeButton.addEventListener("click", (event) => {
+      event.stopPropagation();
 
+      addButtonFormTask();
+    });
 
-        addButtonFormTask();
-    })
+    formAddTask.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-    formAddTask.addEventListener('submit', (event) => {
-        event.preventDefault();
+      const formData = new FormData(event.target);
 
-        const formData = new FormData(event.target)
+      const nameTask = formData.get("nameTask");
+      const priorityTask = formData.get("priority");
+      const deadlineTask = formData.get("deadlineTask");
 
-        const nameTask = formData.get('nameTask')
-        const priorityTask =formData.get('priority')
-        const deadlineTask = formData.get('deadlineTask')
+      const newTask = new Task(nameTask, priorityTask, deadlineTask);
 
-        const newTask = new Task(nameTask,priorityTask,deadlineTask)
+      console.log(newTask);
 
-        console.log(newTask)
+      const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push(newTask);
 
-        tasks.push(newTask)
-
-        localStorage.setItem('tasks',JSON.stringify(tasks))
-        renderTask();
-        renderFormTask();
-        console.log(tasks)
-
-    })
-
-    }
-    addButtonFormTask();
-    taskList.appendChild(addNewTaskElement);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      renderTask();
+      renderFormTask();
+      console.log(tasks);
+    });
+  }
+  addButtonFormTask();
+  taskList.appendChild(addNewTaskElement);
 }
 
-export function renderInputFormTask() {
-
-}
+export function renderInputFormTask() {}
